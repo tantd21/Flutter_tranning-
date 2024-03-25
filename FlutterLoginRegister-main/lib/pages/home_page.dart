@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:login_register_firebase/pages/login_page.dart';
@@ -6,66 +5,37 @@ import 'package:login_register_firebase/pages/login_page.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    User? user = FirebaseAuth.instance.currentUser;
-
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Color.fromARGB(255,245,239,231),
       body: Center(
-        child: user != null
-            ? LoggedInWidget(user: user)
-            : LoginPageWidget(), // Chuyển hướng đến LoginPage nếu chưa đăng nhập
+        child: LoginPageWidget(), // Chuyển hướng đến LoginPage nếu chưa đăng nhập
       ),
     );
   }
 }
-
-class LoggedInWidget extends StatelessWidget {
-  final User user;
-
-  const LoggedInWidget({Key? key, required this.user}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Signed in as ${user.email}",
-          style: GoogleFonts.aclonica(
-            fontSize: 18,
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.red,
-          ),
-          child: MaterialButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            child: Text("Sign out"),
-          ),
-        )
-      ],
-    );
-  }
-}
-
 class LoginPageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: const EdgeInsets.only(top: 1.0), // Điều chỉnh khoảng cách ở phía trên hình ảnh logo
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Thêm hình ảnh logo vào đây
+          Image.asset(
+            'assets/logo.png', // Đường dẫn đến hình ảnh logo của bạn
+            width: 300, // Đặt kích thước cho logo
+            height: 300,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           Text(
-            "You are not signed in",
+            "Welcome to TrumAmThuc \nExplore a wide range of dishes and delivery services right to your door.",
+            textAlign: TextAlign.center,
             style: GoogleFonts.aclonica(
               fontSize: 18,
+              color: Color.fromARGB(255, 60, 33, 33),
             ),
           ),
           const SizedBox(
