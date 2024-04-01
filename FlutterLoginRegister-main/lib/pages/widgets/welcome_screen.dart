@@ -1,17 +1,19 @@
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:login_register_firebase/core/utils/image_constant.dart';
 import 'package:login_register_firebase/core/utils/size_utils.dart';
-import 'package:login_register_firebase/pages/login_page.dart';
-import 'package:flutter/material.dart';
 import 'package:login_register_firebase/pages/widgets/custom_elevated_button.dart';
 import 'package:login_register_firebase/pages/widgets/custom_image_view.dart';
 import 'package:login_register_firebase/pages/widgets/custom_outlined_button.dart';
 import 'package:login_register_firebase/routes/app_routes.dart';
 import 'package:login_register_firebase/theme/custom_text_style.dart';
 import 'package:login_register_firebase/theme/theme_helper.dart';
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key})
+import 'package:login_register_firebase/core/app_export.dart';
+
+
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key})
       : super(
           key: key,
         );
