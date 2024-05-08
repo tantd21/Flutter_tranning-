@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_register_firebase/components/custom_button.dart';
 import 'package:login_register_firebase/components/my_text_field.dart';
 import 'package:login_register_firebase/pages/login_page.dart';
 
@@ -30,7 +29,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Color.fromARGB(255, 204, 112, 0),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

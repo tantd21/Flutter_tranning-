@@ -15,7 +15,7 @@ class MyTextField extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 25),
       padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
       decoration: BoxDecoration(
-        color: Colors.deepPurple[200],
+        color: Color.fromARGB(255, 250, 176, 50),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(

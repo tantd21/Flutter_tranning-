@@ -12,7 +12,7 @@ class ForgotPassword extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.deepPurple[400],
+          backgroundColor: Color.fromARGB(255, 204, 112, 0),
           content: Text(
             "Password reset link sent, check your email",
             style: GoogleFonts.poppins(
