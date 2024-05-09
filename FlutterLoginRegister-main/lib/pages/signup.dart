@@ -16,6 +16,8 @@ class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final _phoneController = TextEditingController();
+
 
   @override
   void dispose() {
@@ -23,6 +25,7 @@ class _SignUpState extends State<SignUp> {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _usernameController.dispose();
+    _phoneController.dispose();
     super.dispose();
   }
 
@@ -58,7 +61,7 @@ class _SignUpState extends State<SignUp> {
                 // username field
                 MyTextField(
                   controller: _usernameController,
-                  hintText: "username",
+                  hintText: "Username",
                   obscureText: false,
                 ),
 
@@ -86,6 +89,15 @@ class _SignUpState extends State<SignUp> {
                 MyTextField(
                   controller: _confirmPasswordController,
                   hintText: "Confirm Password",
+                  obscureText: true,
+                ),
+
+                const SizedBox(height: 10),
+
+                //field for phone
+                MyTextField(
+                  controller: _phoneController,
+                  hintText: "Phone Number",
                   obscureText: true,
                 ),
 
@@ -126,6 +138,7 @@ class _SignUpState extends State<SignUp> {
                       Text(
                         "Already registered ?",
                         style: GoogleFonts.poppins(
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -141,7 +154,8 @@ class _SignUpState extends State<SignUp> {
                         child: Text(
                           "Sign in",
                           style: GoogleFonts.poppins(
-                            color: Colors.blue[600],
+                            fontSize: 20,
+                            color: Color.fromARGB(255, 255, 255, 255),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

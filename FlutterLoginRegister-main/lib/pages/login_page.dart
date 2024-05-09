@@ -65,12 +65,28 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                   ),
                   SizedBox(height: 25),
-                  MyButton(
-                    onTap: () {
-                      // Add your sign-in logic here
-                    },
-                    textContent: "Sign in",
+                  GestureDetector(
+                  onTap: () {
+                    // Perform sign up functionality here
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Adjust button size
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      "Sign in",
+                      style: GoogleFonts.poppins(
+                        fontSize: 30, // Adjust text size
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
+                ),
+
+                const SizedBox(height: 25),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: GestureDetector(
@@ -82,15 +98,19 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         );
                       },
+                      
                       child: Text(
                         "Forgot Password ?",
                         style: GoogleFonts.poppins(
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.blue[500],
+                          color: const Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
                   ),
+
+                  const SizedBox(height: 25),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
@@ -99,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                         Text(
                           "Not registered yet ? ",
                           style: GoogleFonts.poppins(
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -114,7 +135,8 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             "Sign up",
                             style: GoogleFonts.poppins(
-                              color: Colors.blue[600],
+                              fontSize: 20,
+                              color: const Color.fromARGB(255, 255, 255, 255),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
