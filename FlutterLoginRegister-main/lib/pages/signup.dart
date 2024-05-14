@@ -83,6 +83,8 @@ Column(
   obscureText: false,
   prefixIcon: Icons.person,
 ),
+    SizedBox(height: 16),
+
     MyTextField(
       controller: _emailController,
       hintText: "Enter your mail/phone number",

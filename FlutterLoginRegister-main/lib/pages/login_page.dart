@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool _rememberMe = false;
 
   @override
   void dispose() {
@@ -25,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 204, 112, 0),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -33,115 +34,200 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Welcome back",
-                    style: GoogleFonts.poppins(
-                      fontSize: 40,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Hello',
+                          style: GoogleFonts.poppins(
+                            fontSize: 32,
+                            color: Colors.red, // Set color of "Hello" to red
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '\nthere!',
+                          style: GoogleFonts.poppins(
+                            fontSize: 32,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 8),
                   Text(
-                    "Login down below!",
+                    "Sign in to access your package history and get real-time updates on all your shipments",
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Colors.grey[700],
                     ),
                   ),
                   SizedBox(height: 25),
                   MyTextField(
                     controller: _emailController,
-                    hintText: "Email",
+                    hintText: "Enter your mail/phone number",
                     obscureText: false,
+                    prefixIcon: Icons.email,
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 16),
                   MyTextField(
                     controller: _passwordController,
                     hintText: "Password",
                     obscureText: true,
+                    prefixIcon: Icons.lock,
+                    suffixIcon: Icons.visibility, // Icon hiển thị mật khẩu
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: _rememberMe,
+                            onChanged: (bool? newValue) {
+                              setState(() {
+                                _rememberMe = newValue!;
+                              });
+                            },
+                          ),
+                          Text(
+                            "Remember me",
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              color: Colors.grey[700],
+                            ),
+                          ),
+                        ],
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ForgotPassword(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Forgot password?",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.red,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 25),
                   GestureDetector(
-                  onTap: () {
-                    // Perform sign up functionality here
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20), // Adjust button size
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Text(
-                      "Sign in",
-                      style: GoogleFonts.poppins(
-                        fontSize: 30, // Adjust text size
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    onTap: () {
+                      // Perform sign in functionality here
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                    ),
-                  ),
-                ),
-
-                const SizedBox(height: 25),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ForgotPassword(),
-                          ),
-                        );
-                      },
-                      
-                      child: Text(
-                        "Forgot Password ?",
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  const SizedBox(height: 25),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Not registered yet ? ",
+                      child: Center(
+                        child: Text(
+                          "Sign In",
                           style: GoogleFonts.poppins(
-                            fontSize: 20,
+                            fontSize: 16,
+                            color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUp(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Sign up",
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Expanded(child: Divider(color: Colors.grey)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Text(
+                          "Or",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: const Color.fromARGB(255, 51, 51, 51),
+                          ),
+                        ),
+                      ),
+                      Expanded(child: Divider(color: Colors.grey)),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  GestureDetector(
+                    onTap: () {
+                      // Perform Google sign in functionality here
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/google_logo.png', // Make sure to add your Google logo asset
+                            height: 20,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            "Continue with Google",
                             style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              color: const Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 16,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                  ),
+                  SizedBox(height: 25),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account? ",
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUp(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Create an account",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14,
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
