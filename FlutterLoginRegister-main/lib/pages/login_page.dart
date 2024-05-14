@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:login_register_firebase/components/custom_button.dart';
 import 'package:login_register_firebase/components/my_text_field.dart';
 import 'package:login_register_firebase/pages/forgot_password.dart';
 import 'package:login_register_firebase/pages/signup.dart';
